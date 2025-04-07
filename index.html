@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="d-flex justify-content-center align-items-center text-white" style="background-color: #1E1E2E; height: 100vh;">
+    <section id="tareas__container" class="bg-dark text-light text-center rounded shadow p-4">
+        <div class="tareas__header bg-secondary rounded p-3 mb-3">
+            <h1 class="h4 fw-bold">LISTA DE TAREAS</h1>
+        </div>
+    
+        <div class="tareas__content">
+            <form class="form__container row g-3 justify-content-center mb-4">
+                <div class="col-md-3">
+                    <input type="text" class="form-control bg-info text-light border-primary" id="tarea-input" placeholder="Nombre de la tarea" required>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control bg-info text-light border-primary" id="descripcion-input" placeholder="Descripcion" required>
+                </div>
+                <div class="col-md-3">
+                    <input type="datetime-local" class="form-control bg-info text-light border-primary" id="fecha-input" required>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success w-100 fw-bold">Agregar</button>
+                </div>
+            </form>
+    
+            <div class="tareas-informacion">
+                <div class="mb-3">
+                    <button class="btn btn-outline-light btn-sm filtro" data-filtro="todas">Todas</button>
+                    <button class="btn btn-outline-success btn-sm filtro" data-filtro="completadas">Completadas</button>
+                    <button class="btn btn-outline-warning btn-sm filtro" data-filtro="pendientes">Pendientes</button>
+                </div>
+                <ul class="tareas-lista p-0">
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
