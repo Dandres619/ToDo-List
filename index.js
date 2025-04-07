@@ -45,6 +45,11 @@ function cargarTareas(tarea) {
     botonCompletar.textContent = 'Completar';
     botonCompletar.classList.add('btn', 'btn-warning', 'btn-sm', 'fw-bold');
 
+    if (tarea.completada) {
+        elementoLista.classList.add('completada');
+        botonCompletar.textContent = 'Pendiente';
+    }
+
     let contenedorBotones = document.createElement('div');
     contenedorBotones.classList.add('col', 'd-flex', 'justify-content-center', 'gap-3');
     contenedorBotones.append(botonEliminar, botonCompletar);
@@ -61,7 +66,11 @@ function cargarTareas(tarea) {
 
     botonCompletar.addEventListener('click', () => {
         elementoLista.classList.toggle('completada');
-        if (elementoLista.classList.contains('completada')) {
+    
+        tarea.completada = !tarea.completada;
+        localStorage.setItem('tareas', JSON.stringify(getTareas));
+    
+        if (tarea.completada) {
             botonCompletar.textContent = 'Pendiente';
         } else {
             botonCompletar.textContent = 'Completar';
@@ -152,12 +161,11 @@ function crearTareas() {
 
     botonCompletar.addEventListener('click', () => {
         elementoLista.classList.toggle('completada');
-
-        if (elementoLista.classList.contains('completada')) {
-            botonCompletar.textContent = 'Pendiente';
-        } else {
-            botonCompletar.textContent = 'Completar';
-        }
+    
+        nuevaTarea.completada = !nuevaTarea.completada;
+        localStorage.setItem('tareas', JSON.stringify(getTareas));
+    
+        botonCompletar.textContent = nuevaTarea.completada ? 'Pendiente' : 'Completar';
     });
 
     getTareas.push(nuevaTarea);
